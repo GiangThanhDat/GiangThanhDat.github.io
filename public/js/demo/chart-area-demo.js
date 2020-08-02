@@ -65,6 +65,7 @@ function update() {
       console.log(time);
       addData(myLineChart,newTime,value);
       removeData(myLineChart,20);
+      myLineChart.update();
       time = newTime;
     }
   });  
