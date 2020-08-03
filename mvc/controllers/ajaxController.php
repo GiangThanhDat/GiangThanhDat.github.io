@@ -39,6 +39,16 @@ class ajaxController extends controller
 			echo 0;
 	}
 
+	function giatri_del($ma_tram,$ma_cambien,$ma_dailuong=[])
+	{
+		$giatri = $this->model("giatri");
+		if ($ma_dailuong != []) {
+			echo $giatri->remove_DL($ma_tram,$ma_cambien,$ma_dailuong);
+		}else{
+			echo $giatri->remove_CB($ma_tram,$ma_cambien);
+		}
+	}
+
 	function getListByFK($modelName, $FK){
 		if($modelName){
 			$model = $this->model($modelName);
