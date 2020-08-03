@@ -16,6 +16,52 @@
               </div>
           </div>
         </div>
+<?php   
+  $masterController = new controller;               
+  $CamBienModel = $masterController->model("cambien");
+  $DaiLuongModel = $masterController->model("dailuongdo");
+  $sensorMeasuresList = json_decode($data['sensorMeasuresList'],true);
+  $keys = json_decode($data['keys'],true);
+  $ma_tram = $keys['ma_tram'];
+?>
+<div class="container-fluid">
+  <hr>
+  <!-- <div class="row"> -->
+    <div class="card-columns ">
+      <?php foreach ($sensorMeasuresList as $value): ?>
+        <?php 
+      // prepare data
+      // print_r($CamBienModel->getByKey($value['ma_cambien']));      
+      // print_r($DaiLuongModel->getByKey($value['ma_dailuong']));
+        $cambienObj = json_decode($CamBienModel->getByKey($value['ma_cambien']),true);
+        $dailuongObj = json_decode($DaiLuongModel->getByKey($value['ma_dailuong']),true);   
+        $ma_cambien = $cambienObj['ma_cambien'];
+        $ma_dailuong = $dailuongObj['ma_dailuong'];
+
+        ?>      
+        <!-- style="width: 610px;" -->
+        <div class="card bg-primary text-white text-center" style="width:auto;height: auto;" > 
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12 border rounded">  
+                <hr>
+                <div class="row">
+                  <div class="col-6"><p class="card-text small"><?= $cambienObj['ten_cambien'] ?></p></div> 
+                  <div class="col-6"><p class="card-text small"><?= $dailuongObj['ten_dailuong'] ?></p></div>                   
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>  
+          <div class="card-footer bg-info">
+            <a href="collect/chart/<?= $ma_tram ?>/<?= $ma_cambien ?>/<?= $ma_dailuong ?>" class="btn btn-primary btn-sm">Xem chi tiết</a>
+          </div>        
+        </div>  
+      <?php endforeach ?>
+    </div>
+  <!-- </div> -->
+  <hr>
+</div>        
         <script type="text/javascript">
           const keys = <?= $data['keys'] ?>
         </script>
