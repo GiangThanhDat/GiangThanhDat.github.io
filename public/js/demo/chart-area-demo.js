@@ -92,7 +92,7 @@ $(document).ready(function() {
       update();
       browse(idStation,sensorMeasuresList);
       myLineChart.update();
-  },100);
+  },1000);
 });
 
 
