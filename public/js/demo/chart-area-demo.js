@@ -56,6 +56,7 @@ function addData(chart, label, data) {
   chart.data.datasets[0].data.push(data);
   console.log(chart.data.labels);
   console.log(chart.data.datasets[0].data);
+  chart.update();
 }
 
 function removeData(chart, lim) {
@@ -63,6 +64,7 @@ function removeData(chart, lim) {
     chart.data.labels.shift();
     chart.data.datasets[0].data.shift();  
   }
+  chart.update();
 }
 var time = "";
 
@@ -75,12 +77,13 @@ function update() {
     
     value = val['val'];
     newTime = val['time'];
-    if(newTime != time){     
+    var myTime = newTime.substr(11, 8);    
+    if(myTime != time){     
       console.log(val);
-      console.log(time);
-      addData(myLineChart,newTime,value);
+      console.log(myTime);
+      addData(myLineChart,myTime,value);
       removeData(myLineChart,20);
-      time = newTime;
+      time = myTime;
     }
   });  
 }
@@ -91,8 +94,7 @@ $(document).ready(function() {
   setInterval(function () {
       update();
       browse(idStation,sensorMeasuresList);
-      myLineChart.update();
-  },1000);
+  },100);
 });
 
 
