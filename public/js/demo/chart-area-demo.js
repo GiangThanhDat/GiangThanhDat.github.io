@@ -33,20 +33,6 @@ function browse(idStation,sensorMeasuresList) {
   });
 }
 
-function setValue(ma_tram,ma_cambien,ma_dailuong) {
-  $.get("collect/get/"+ma_tram+"/"+ma_cambien+"/"+ma_dailuong,function(val){
-    // console.log(val);
-    val = $.parseJSON(val);
-    // console.log(val);
-    value = val['val'];
-    time = val['time'];
-    var myTime = time.substr(11, 8);    
-    $('#val_'+ma_tram+"_"+ma_cambien+"_"+ma_dailuong).html(value);
-    $('#time_'+ma_tram+"_"+ma_cambien+"_"+ma_dailuong).html(myTime);
-    
-  });
-}
-
 
 console.log(keys);
 
@@ -77,13 +63,12 @@ function update() {
     
     value = val['val'];
     newTime = val['time'];
-    var myTime = newTime.substr(11, 8);    
-    if(myTime != time){     
+    if(newTime != time){     
       console.log(val);
-      console.log(myTime + " " + time);
-      addData(myLineChart,myTime,value);
+      console.log(time);
+      addData(myLineChart,newTime,value);
       removeData(myLineChart,20);
-      time = myTime;
+      time = newTime;
     }
   });  
 }
@@ -93,8 +78,7 @@ function update() {
 $(document).ready(function() {
   setInterval(function () {
       update();
-      browse(idStation,sensorMeasuresList);
-  },100);
+  },100)
 });
 
 
