@@ -15,14 +15,14 @@
 <div class="container-fluid">
 	<hr>
 	<div class="row">
-		<div class="col-4">
+		<div class="col-sm-6  col-md-4">
 			<a  href="collect/addCB/<?= $ma_tram ?>" >
 				<button type="button" class="btn btn-outline-primary" style="width: 311.7px">
 					Bổ sung cảm biến
 				</button>
 			</a>	
 		</div>
-		<div class="col-4">
+		<div class="col-sm-6 col-md-4">
 			<div class="btn-group">
 				<button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="setting" value="1">
 					<!-- <i class="fa fa-cog"></i> -->
@@ -58,7 +58,7 @@
 
 				?>			
 				<!-- style="width: 610px;" -->
-				<div class="card bg-primary text-white text-center" style="width:auto;height: 300px;"	> 
+				<div class="card text-white text-center" style="width:auto;height: 300px;"	> 
 					<div class="card-header bg-success">
 						<div class="row">
 							<div class="col-md-10 bg-white text-black rounded">
@@ -77,9 +77,9 @@
 										<li>
 											<form action="collect/editDL/<?= $ma_tram ?>/<?= $ma_dailuong ?>" method="POST">
 												<div class="input-group">
-													<span class="input-group-addon">Ngưỡng cảnh báo trên</span>
+													<span class="input-group-addon">Mức cảnh báo trên</span>
 													<input type="number" step="any" name="nguon_tren" required="" value="<?= $dailuongObj['nguon_tren'] ?>">
-													<span class="input-group-addon">Ngưỡng cảnh báo dưới</span>
+													<span class="input-group-addon">Mức cảnh báo dưới</span>
 													<input type="number" step="any" name="nguon_duoi" required="" value="<?= $dailuongObj['nguon_duoi'] ?>">
 												</div>			
 												<div class="input-group">
@@ -95,22 +95,27 @@
 							</div>						
 						</div>
 					</div>
-					<div class="card-body">
-						<div class="row">
-							<div class="col-md-12 border rounded">	
-								<hr>
-								<div class="row">
-									<div class="col-6"><p class="card-text small"><?= $cambienObj['ten_cambien'] ?></p></div>	
-									<div class="col-6"><p class="card-text small"><?= $dailuongObj['ten_dailuong'] ?></p></div>										
-								</div>
-								<div class="row">
-									<div class="col-3"><p class="card-text small" id="val_<?= $ma_tram ?>_<?= $ma_cambien ?>_<?= $ma_dailuong ?>"></p></div>
-									<div class="col-3"><span class="card-text small"><?= $dailuongObj['ten_donvi'] ?></span></div>
-									<div class="col-4"><p class="card-text small" id="time_<?= $ma_tram ?>_<?= $ma_cambien ?>_<?= $ma_dailuong ?>"></p></div>
-								</div>
-								<hr>
-							</div>
-						</div>
+					<div class="card-body text-white">
+						<table class="table responsive border">
+							<tr>
+								<th class="border"><p class="card-text"><?= $cambienObj['ten_cambien'] ?></p>
+								</th>
+								<th class="	border"><?= $dailuongObj['ten_dailuong'] ?></th>
+							</tr>
+							<tr bgcolor="" >
+								<th>
+									<p class="card-text" id="val_<?= $ma_tram ?>_<?= $ma_cambien ?>_<?= $ma_dailuong ?>"></p>									
+								</th>
+								<th >
+									<p class="card-text"><?= $dailuongObj['ten_donvi'] ?></p>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="2">
+									<p class="card-text " id="time_<?= $ma_tram ?>_<?= $ma_cambien ?>_<?= $ma_dailuong ?>"></p>
+								</th>
+							</tr>
+						</table>							
 					</div>	
 					<div class="card-footer bg-info">
 						<a href="collect/chart/<?= $ma_tram ?>/<?= $ma_cambien ?>/<?= $ma_dailuong ?>" class="btn btn-primary btn-sm">Xem chi tiết</a>
