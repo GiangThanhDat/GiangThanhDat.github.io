@@ -112,12 +112,8 @@
 <script type="text/javascript">
   const idStation = <?= $ma_tram ?>;
   const sensorMeasuresList = <?= $data['sensorMeasuresList'] ?>;
+</script>             
+<script type="text/javascript">
+  const keys = <?= $data['keys'] ?>
 </script>
-<script src="./public/js/demo/loadData.js"></script>                
-        <script type="text/javascript">
-          const keys = <?= $data['keys'] ?>
-        </script>
-        <!-- Page level custom scripts -->
-        <script src="./public/js/demo/chart-area-demo.js"></script>
-        <script src="./public/js/demo/chart-pie-demo.js"></script>
-        <script src="./public/js/demo/chart-bar-demo.js"></script>
+<script src="./public/js/demo/chart-area-demo.js"></script>
