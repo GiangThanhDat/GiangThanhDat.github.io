@@ -140,10 +140,13 @@ function setAttachLists(){
 		console.log("list="+list);
 		objKeys = getKeyArray(list[0]);// lấy các key của 1 obj(mổi obj chỉ có key(index 0) và value(index 1) mặc định)
 		const selector = '#'+objKeys[0]; // quy ước selector sẽ là key của obj
+		const selectors = '.'+objKeys[0];
 		console.log("selector="+selector);
 		if(list){
 			console.log("objKeys="+objKeys);
+			console.log($(selector));
 			$(selector).append(setDropdownList(list,objKeys[0],objKeys[1]));
+			$(selectors).append(setDropdownList(list,objKeys[0],objKeys[1]));
 		}
 	}
 }
@@ -222,6 +225,7 @@ $(document).ready(function() {
 	$("#alert-fail").hide();
 	$("#list-all-alert-success").hide();
 	$("#list-all-alert-fail").hide();	
+
 	const createdCell = function(cell) {
 		let original
 
@@ -269,6 +273,7 @@ $(document).ready(function() {
 
 	if(attachLists){
 		setAttachLists();
+		console.log("?");
 	}
 
 	if(obj !== null) {// có obj tức là đang ở trang detail
