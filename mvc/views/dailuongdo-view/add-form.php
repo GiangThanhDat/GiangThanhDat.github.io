@@ -2,6 +2,7 @@
 <?php 	
 	$listMeasuresBySensor = json_decode($data['listMeasuresBySensor'],true);	
 	$tram_dang_xem = json_decode($data['tram_obj'],true);
+	$cambienObj = json_decode($data['cb_obj'],true);	
  ?>
 <div class="container-fluid">
 	<div class="row">
@@ -68,36 +69,30 @@
 				<h6 class="m-0 font-weight-bold text-primary">Các đại lượng đã cài đặt cho cảm biến <?= json_decode($data['cb_obj'],true)['ten_cambien'] ?> tại trạm: <?= $tram_dang_xem['ma_tram'] ?> - <?= $tram_dang_xem['ten_tram'] ?></h6>
 			</div>
 			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-bordered" width="100%" cellspacing="0">
-						<thead>
-							<tr>
-								<th>Mả đại lượng</th>
-								<th>Tên đại lượng</th>
-								<th>Tên đơn vị</th>
-								<th>Ngưỡn trên</th>
-								<th>Ngưỡn dưới</th>
-								<th>Màu cảnh báo</th> 
-							</tr>
-						</thead>
-						<tbody> 
-							<?php foreach ($listMeasuresBySensor as $dl): ?>
-								<tr>
-									<th><?= $dl['ma_dailuong'] ?></th>
-									<th><?= $dl['ten_dailuong'] ?></th>
-									<th><?= $dl['ten_donvi'] ?></th>
-									<th><?= $dl['nguon_tren'] ?></th>
-									<th><?= $dl['nguon_duoi'] ?></th>
-									<th>
-										<input type="color" value="<?= $dl['mau'] ?>" style="width:100%"/>
-									</th>
-								</tr>
-							<?php endforeach ?>
-						</tbody>
-					</table>
-				</div>
+			      <div class="table-responsive">
+			        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+			          <thead>
+			            <tr>
+			              <th>Mả đại lượng đo</th>
+			              <th>Tên đại lượng đo</th>
+			              <th>Tên đơn vị đo</th>
+			              <th>Ngưỡn trên</th>
+			              <th>Ngưỡn dưới</th>
+			              <th>Màu cảnh báo</th>              
+			              <th class="text-center">Delete</th>
+			            </tr>
+			          </thead>
+			        <tbody>               
+			        </tbody>
+			      </table>
+			    </div>				
 			</div>
 		</div>
 	</div>
 </div>
 
+
+<script type="text/javascript">
+	const ma_tram = <?= $tram_dang_xem['ma_tram'] ?>;
+	const ma_cb = <?= $cambienObj['ma_cambien'] ?>;
+</script>
