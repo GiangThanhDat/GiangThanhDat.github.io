@@ -37,7 +37,7 @@
 				<div class="form-row">
 					<div class="form-group col-md-12">
 						<label for="donvitinh">Đơn vị</label>
-						<select class="form-control" id="ma_donvi" name="ma_donvi">
+						<select class="form-control ma_donvi"  name="ma_donvi">
 							<option selected>chọn đơn vị...</option> 
 						</select>     
 					</div>					
@@ -89,6 +89,29 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Đơn vị đo</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>          
+      </div>
+      <div class="modal-body">
+        <select class="form-control" id="ma_donvi"> 
+        </select>        
+      </div>
+      <div class="modal-footer">        
+        <button type="button" class="btn btn-primary col-md-12" data-dismiss="modal" id="close-donvi">Lưu</button>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
 
