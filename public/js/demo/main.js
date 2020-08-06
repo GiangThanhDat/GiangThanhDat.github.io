@@ -13,7 +13,7 @@ var CamBienColumnsDefine = [
 	// },
 	{ 
 		'data': null,
-		'defaultContent': "<div class='btn btn-danger btn-circle remove'><i class='fas fa-trash'></i></div>"
+		'defaultContent': "<div  class='btn btn-danger btn-circle cambien-remove'><i class='fas fa-trash'></i></div>"
 	}
 	];
 var DonViColumnsDefine = [
@@ -57,7 +57,7 @@ var DaiLuongColumnsDefine = [
 	// },
 	{ 
 		'data': null,
-		'defaultContent': "<div  class='btn btn-danger btn-circle remove'><i class='fas fa-trash'></i></div>"
+		'defaultContent':  "<div   class='btn btn-danger btn-circle dailuongdo-remove'><i class='fas fa-trash'></i></div>"
 	}
 ];
 var HuyenColumnsDefine = [
@@ -149,7 +149,7 @@ function setAttachLists(){
 }
 
 
-var columnName; // get the column name when cick on any cell
+var columnName; // get the column name when cick on axny cell
 var row_num;
 var column_num;
 
@@ -361,7 +361,6 @@ $(document).ready(function() {
 	});
 	// click vào nút xóa thì 
 	$(".remove").click(function(event) {
-
 		if(row_num !== 'undefine'){
 			var Ok = confirm("Are you sure?");
 			if (Ok) {
@@ -376,7 +375,46 @@ $(document).ready(function() {
 				});
 			}
 		}
-	});			
+	});		
+
+	$(".cambien-remove").click(function(event) {
+		if(row_num !== 'undefine'){
+			var Ok = confirm("Are you sure?");			
+			if (Ok) {
+				const row = dataTableList[row_num];							
+				if (ma_tram) {							
+					$.post('ajax/giatri_del/'+ma_tram+"/"+row[getKeyArray(row)[0]],function(response){					
+						if(response != 0){							
+							location.reload(true);
+						}else{
+							alert(response);
+						}
+					});	
+				}
+			}
+		}
+	});	
+
+
+	$(".dailuongdo-remove").click(function(event) {
+		if(row_num !== 'undefine'){
+			var Ok = confirm("Are you sure?");			
+			if (Ok) {
+				const row = dataTableList[row_num];							
+				// alert(ma_tram + " " + ma_cb);
+				if (ma_tram && ma_cb) {						
+					// alert('ajax/giatri_del/'+ma_tram+"/"+ma_cb+"/"+row[getKeyArray(row)[0]]);
+					$.post('ajax/giatri_del/'+ma_tram+"/"+ma_cb+"/"+row[getKeyArray(row)[0]],function(response){					
+						if(response != 0){							
+							location.reload(true);
+						}else{
+							alert(response);
+						}
+					});	
+				}
+			}
+		}
+	});	
 
 	$('.detail').click(function(event) {
 		if(row_num !== 'undefine'){
