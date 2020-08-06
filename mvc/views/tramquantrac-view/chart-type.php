@@ -1,21 +1,24 @@
-        <div class="container-fluid">
-          <!-- Content Row -->
-          <div class="row">
-            <div class="col-xl-12 col-lg-12">
-              <!-- Area Chart -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Chart</h6>
-                </div>
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                  </div>
-                  <hr>
-                </div>
-              </div>
-          </div>
+        
+
+
+<div class="container-fluid">
+  <!-- Content Row -->
+  <div class="row">
+    <div class="col-xl-12 col-lg-12">
+      <!-- Area Chart -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Chart</h6>
         </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas id="myAreaChart"></canvas>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
 <?php   
   $masterController = new controller;               
   $CamBienModel = $masterController->model("cambien");
@@ -23,8 +26,8 @@
   $sensorMeasuresList = json_decode($data['sensorMeasuresList'],true);
   $keys = json_decode($data['keys'],true);
   $ma_tram = $keys['ma_tram'];
+  $dai_luong = json_decode($DaiLuongModel->getByKey($keys['ma_dailuong']),true);
 ?>
-<div class="container-fluid">
   <hr>
   <!-- <div class="row"> -->
     <div class="card-columns ">
@@ -40,7 +43,7 @@
 
         ?>      
         <!-- style="width: 610px;" -->
-        <div class="card text-white text-center" style="width:300px;height:auto;" > 
+        <div class="card text-white text-center" style="width:300px;height: 300px;" > 
           <div class="card-header bg-success">
             <div class="row">
               <div class="col-md-10 bg-white text-black rounded">
@@ -69,6 +72,7 @@
 </div>        
 <script type="text/javascript">
   const keys = <?= $data['keys'] ?>;
+  const dai_luong = "<?= $dai_luong['ten_dailuong'] ?>";
 </script>
 <!-- Page level custom scripts -->
 <script src="./public/js/demo/chart-area-demo.js"></script>
