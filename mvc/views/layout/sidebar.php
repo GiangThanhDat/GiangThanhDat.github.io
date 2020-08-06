@@ -41,7 +41,7 @@
       </div>
     </li>      
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+<!--       <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#tinh-tp" aria-expanded="true" aria-controls="tinh-tp">
             <i class="fas fa-fw fa-cog"></i>
             <span>Tỉnh - Thành Phố</span>
@@ -53,7 +53,7 @@
               <a class="collapse-item" href="admin/add/tinhtp">Thêm mới</a>
           </div>
       </div>
-  </li>
+  </li> -->
   <!-- Nav Item - Utilities Collapse Menu -->
 <!--   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cambien" aria-expanded="true" aria-controls="cambien">
@@ -68,7 +68,7 @@
       </div>
     </div>
   </li> -->
-    <!-- <li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#donvi" aria-expanded="true" aria-controls="donvi">
         <i class="fas fa-fw fa-wrench"></i>
         <span>Đơn vị đo</span>
@@ -80,7 +80,7 @@
           <a class="collapse-item" href="admin/add/donvido">Thêm mới</a>
         </div>
       </div>
-    </li> -->
+    </li>
 <!--     <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#dailuong" aria-expanded="true" aria-controls="dailuong">
             <i class="fas fa-fw fa-wrench"></i>
