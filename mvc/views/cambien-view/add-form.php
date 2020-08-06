@@ -1,7 +1,7 @@
 <?php 
-	$listSensorsByStation = json_decode($data['listSensorsByStation'],true);
-	$tram_dang_xem = json_decode($data['tram_obj'],true);
- ?>
+$listSensorsByStation = json_decode($data['listSensorsByStation'],true);
+$tram_dang_xem = json_decode($data['tram_obj'],true);
+?>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4"></div>
@@ -12,6 +12,22 @@
 			<strong>Thêm thành công!!</strong><hr>
 		</div>
 		<div id="alert-fail" class="alert alert-danger alert-dismissible fade show text-center col-md-4" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<strong>Xẩy ra lổi, vui lòng kiểm tra lại</strong><hr>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div id="list-all-alert-success" class="alert alert-success alert-dismissible fade show text-center col-md-4" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<strong>Cập nhật thành công!!</strong><hr>
+		</div>
+		<div id="list-all-alert-fail" class="alert alert-danger alert-dismissible fade show text-center col-md-4" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
@@ -42,36 +58,35 @@
 				</div>					
 				<button type="submit" class="btn btn-primary col-md-12">Lưu</button>
 			</form>				
-	
+			
 		</div>
-	<!-- Ảnh trang trí -->
-	<div class="col-lg-6 mb-4">
-		<!-- Illustrations -->
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">Danh sách cảm biến đã lắp tại trạm: <?= $tram_dang_xem['ma_tram'] ?> - <?= $tram_dang_xem['ten_tram'] ?></h6>
-			</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-bordered" width="100%" cellspacing="0">
-						<thead>
-							<tr>
-								<th>Mả cảm biến</th>
-								<th>Tên cảm biến/th>
-							</tr>
-						</thead>
-						<tbody> 
-							<?php foreach ($listSensorsByStation as $cb): ?>
+		<!-- Ảnh trang trí -->
+		<div class="col-lg-6 mb-4">
+			<!-- Illustrations -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Danh sách cảm biến đã lắp tại trạm: <?= $tram_dang_xem['ma_tram'] ?> - <?= $tram_dang_xem['ten_tram'] ?></h6>
+				</div>
+				<div class="card-body">	
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+							<thead>
 								<tr>
-									<th><?= $cb['ma_cambien'] ?></th>
-									<th><?= $cb['ten_cambien'] ?></th>									
+									<th>Mả cảm biến</th>
+									<th>Tên cảm biến</th>              
+									<th class="text-center">remove</th>			              
 								</tr>
-							<?php endforeach ?>
-						</tbody>
-					</table>
-				</div>				
+							</thead>
+							<tbody>              
+							</tbody>
+						</table>
+					</div>							
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+
+	<script type="text/javascript">
+		const ma_tram = <?= $tram_dang_xem['ma_tram'] ?>
+	</script>
 
