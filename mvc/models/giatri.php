@@ -54,24 +54,27 @@ class giatri extends data
 		}
 		return 0;
 	}
-
+	
 	public function get($ma_tram,$ma_cambien,$ma_dailuong)
 	{
-		$getLatestVal = "SELECT `giatri`,`thoigian` FROM `giatri` WHERE `ma_tram` = '$ma_tram' AND `ma_cambien` = '$ma_cambien' AND `ma_dailuong` = '$ma_dailuong' ORDER BY thoigian DESC LIMIT 1";
+		$getLatestVal = "SELECT `giatri`,`thoigian`,`nguon_tren`,`nguon_duoi`,`mau` FROM `giatri` JOIN `dailuongdo` on(`giatri`.`ma_dailuong` = `dailuongdo`.`ma_dailuong`) WHERE `ma_tram` = '$ma_tram' AND `ma_cambien` = '$ma_cambien' AND `giatri`.`ma_dailuong` = '$ma_dailuong' ORDER BY thoigian DESC LIMIT 1";
 		$dataObj = new data;
 		$result = $dataObj->execute($getLatestVal);		
 		if($result->num_rows==1){
 			$val = $result->fetch_assoc();
 			$myVal = [
-				"val"=>$val['giatri'],
-				"time"=>$val['thoigian']
+				"val"	=>$val['giatri'],
+				"time"	=>$val['thoigian'],
+				"max"	=>$val['nguon_tren'],
+				"min"	=>$val['nguon_duoi'],
+				"mau"	=>$val['mau']
 			];
 			echo json_encode($myVal);
 		}else{
 			echo 'null';
 		}		
 	}
-
+	
 	public function getListSensorsByStation($ma_tram)
 	{
 		require_once(MODElS."cambien.php");
