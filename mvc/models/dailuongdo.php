@@ -21,7 +21,7 @@ class dailuongdo extends data
 
 	public function update($key,$post_request)
 	{
-		echo $this->updateObject("dailuongdo",$post_request,"ma_dailuong",$key);
+		 $this->updateObject("dailuongdo",$post_request,"ma_dailuong",$key);
 	}
 
 	public function remove($key){		
