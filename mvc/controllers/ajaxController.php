@@ -69,7 +69,12 @@ class ajaxController extends controller
 			echo $this->model("nguoiquanly")->duplicateValidation($taikhoan_nql);
 		}
 	}	
-
+	
+	function generalLoad($lim = 30)
+	{
+		echo $this->model("giatri")->generalLoad($lim);
+	}
+	
 	function login(){
 		if($_SERVER['REQUEST_METHOD'] === 'POST'){
 			$nguoiquanlyObj = $this->model("nguoiquanly");
