@@ -19,12 +19,15 @@ $(document).ready(function() {
 
 	function update() {
 		$.get("ajax/generalLoad/1",function(response) {
-			const obj = $.parseJSON(response);
-			var newTime = obj[0]['thoigian'];
-			if (oldTime != newTime) {
-				console.log(oldTime + " - " + newTime);
-				myDashboardTable.row.add(obj[0]).draw(false);
-				oldTime = newTime;
+			console.log(response);
+			if(response != 0){
+				const obj = $.parseJSON(response);
+				var newTime = obj[0]['thoigian'];
+				if (oldTime != newTime) {
+					console.log(oldTime + " - " + newTime);
+					myDashboardTable.row.add(obj[0]).draw(false);
+					oldTime = newTime;
+				}
 			}
 		});	
 	}
