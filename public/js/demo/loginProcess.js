@@ -13,8 +13,8 @@ $(document).ready(function() {
 	    $.post('ajax/login', serializedData, function(response) {
 	    	if(response.trim() != 0){
 	    		console.log(response);
-	    		$('#loi-dang-nhap').hide('slow/400/fast');
-	    		location.replace("admin/show/tramquantrac");
+				$('#loi-dang-nhap').hide('slow/400/fast');
+				location.replace("dashboard/index/10");
 	    	}else{	
 	    		console.log(response + " error");
 	    		$('#loi-dang-nhap').show('slow/400/fast');
