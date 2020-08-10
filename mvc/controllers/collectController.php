@@ -21,8 +21,8 @@ class collectController extends controller
 			$data_string = "";
 			$fileName = "receive.txt";
 			date_default_timezone_set('Asia/Ho_Chi_Minh');
-			$time = date('Y-m-d H:i:s');
 			foreach ($data_keys as $key) {
+				$time = date('Y-m-d H:i:s');
 				$data_string =  $time ."=".$key."=".$data[$key]."\n";
 				$dataString = $this->dataProcess($data_string);
 				$myfile = fopen(FILES.$fileName, "a+");			
